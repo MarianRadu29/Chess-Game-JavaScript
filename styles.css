@@ -1,0 +1,303 @@
+
+body{
+    overflow: hidden;
+    background-image: url(./chessGame.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    font-family: Arial, sans-serif;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+}
+
+.container{
+    background-color:saddlebrown;
+    width: 640px;
+    height: 640px;
+    margin:20px auto;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    border: 5px solid black;
+    transition: transform 1s linear;
+    box-shadow: 10px 10px 150px 75px black;
+}
+#board{
+    display: flex;
+    width:560px;
+    height:560px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 coloane egale */
+    grid-template-rows: repeat(8, 1fr) ;
+    border: 3px solid black;
+}
+
+.white-capture-pieces,.black-capture-pieces{
+    position: absolute;
+    width:275x;
+    height:fit-content;
+    padding: 10px;
+    border-radius: 15px;
+    border: 3px solid black;
+    transform: all 0.5s ease;
+    font-size: 30px;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin:center;
+    z-index: 2;
+}
+
+.white-capture-pieces{
+    left:100px;
+    top:300px;
+}
+.black-capture-pieces{
+    right:100px;
+    top:300px;
+}
+.white-capture-pieces-p,.black-capture-pieces-p{
+    margin: 0;
+    max-width: 245px;
+    height:max-content;
+    overflow-wrap: break-word; 
+    word-break: break-all; 
+    white-space: pre-wrap; 
+    display: flex;
+    background-color: burlywood;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 40px;
+    border-radius: 15px;
+    padding: 10px 10px;
+    overflow: hidden;
+}
+
+legend {
+    background-color:burlywood;
+    border: 3px solid black;
+    border-radius: 30px;
+    color:black;
+    padding: 5px 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 3;
+  }
+  .modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    
+}
+
+.modal-content {
+    display: flex;
+    background-color:sandybrown; 
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 3px solid #888;
+    width: 700px;
+    height: 400px; 
+    text-align: center;
+    align-items: center; 
+    justify-content: center;
+    border-radius: 15px;
+}
+.square{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 1s linear;
+    cursor: pointer;
+    user-select: none;
+}
+.square-promotion{
+    width:100px;
+    height:100px;
+    background-color: burlywood;
+    border: 3px solid black;
+    display: inline-block;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    font-size: 70px;
+}
+#confirm-promotion{
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    border: 5px solid black;
+    background-color: sandybrown;
+    display: inline-block;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    box-shadow:none;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+#confirm-promotion:hover{
+    filter: brightness(1.5);
+}
+
+.rotation {
+    transform: rotate(180deg);
+}
+.luminos {
+    filter: brightness(1.5); 
+    cursor: pointer;
+}
+.select{
+    filter:hue-rotate(90deg);
+}
+
+
+
+.piece{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    transition: transform 1s linear;
+    cursor: pointer;
+    user-select: none;   
+}
+
+
+.rotate-button
+{
+    width: 75px;
+    height: 25px;
+    background-color: #fff;
+    display: flex;
+    position: absolute;
+    top:4%;
+    right: 10%;
+    background-color: transparent;
+
+}
+.button{
+    background-color: burlywood;
+    width: 75px;
+    height: 25px;
+    border-radius: 200px;
+    border:5px solid black;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+    box-shadow: 1px 1px 5px 5px black;
+}
+.button::before{
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 200px;
+    transition: 0.2s;
+}
+input:checked + .button{
+    background-color: chocolate;
+}
+input:checked + .button::before{
+    transform: translateX(40px);
+}
+
+input{
+    display: none;
+}
+
+button
+  {
+    width: 75px;
+    height: 50px;
+    background-color: burlywood;
+    color:black;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 4%;
+    right: 10%;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    box-shadow: 5px 5px 10px 10px  black;
+    /*   trebuie dat display:none cand e activat butonul ala de sus*/
+  }
+
+  @media (max-width:960px)
+  { 
+    *{
+        overflow:visible;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .container{
+        position: relative;
+        width: 380px;
+        height: 380px;
+        z-index: 1;
+    }
+    #board{
+        width:320px;
+        height:320px;
+        margin: auto;
+    }
+    .square{
+        width: 40px;
+        height: 40px;
+        font-size:35px;
+    }
+    .white-capture-pieces,.black-capture-pieces{
+        display: none;/*momentan none*/
+        height: 20px;
+        font-size: 20px;
+    }
+    .square-promotion{
+        width:50px;
+        height:50px;
+        font-size: 40px;
+    }
+    .rotate-button{
+        width: 60px;
+        left: 12%;
+        top:4%;
+        user-select: none;
+        z-index: 2;
+    }
+    input:checked + .button::before{
+        transform: translateX(25px);
+    }
+    #rotateButton{
+        top: 3%;
+        right: 12%;
+        width: 75px;
+        height: 50px;
+        font-size: 18px;
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        z-index: 3;
+    }
+  }
